@@ -8,6 +8,7 @@ public class player2Dctrl : MonoBehaviour
     private Rigidbody2D rb;
     private float moveInputValue;
     private bool isGrounded;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,6 +23,7 @@ public class player2Dctrl : MonoBehaviour
             moveInputValue = (Keyboard.current.dKey.isPressed ? 1 : 0) - (Keyboard.current.aKey.isPressed ? 1 : 0);
         }
         rb.linearVelocity = new Vector2(moveInputValue * speed, rb.linearVelocity.y);
+        if(moveInputValue < 0) { }
         if (Keyboard.current.spaceKey.wasPressedThisFrame && isGrounded)
         {
             rb.AddForce(new Vector2(rb.linearVelocity.x, jumpForce));
